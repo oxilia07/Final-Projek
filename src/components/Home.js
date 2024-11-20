@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useUserAuth } from '../context/UserAuthContext';
 
 // Import the products data from the external file
@@ -8,12 +8,12 @@ import data from '../data';
 
 const Home = () => {
   const { logOut } = useUserAuth();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate('/');
+      navigate('/'); // Navigate to the home/login page after logging out
     } catch (error) {
       console.log(error.message);
     }
@@ -59,9 +59,8 @@ const Home = () => {
                     <Button
                       variant='outline-dark'
                       className='w-100 mt-auto'
-                      onClick={() =>
-                        window.open(product.product_link, '_blank')
-                      }>
+                      onClick={() => navigate(`/product/${product.id}`)} // Navigate to product details page
+                    >
                       View Product
                     </Button>
                   </Card.Body>

@@ -5,14 +5,13 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
+import ProductDetail from './components/ProductDetails';
 
 function App() {
   return (
-    // <Container>
-    //   <Row>
-    //     <Col>
     <UserAuthContextProvider>
       <Routes>
+        {/* Protected route for Home */}
         <Route
           path='/home'
           element={
@@ -21,13 +20,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* Login and Signup routes */}
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        {/* Dynamic route for product details */}
+        <Route path='/product/:id' element={<ProductDetail />} />
+        {/* Add the ProductDetail route */}
       </Routes>
     </UserAuthContextProvider>
-    //     </Col>
-    //   </Row>
-    // </Container>
   );
 }
 
