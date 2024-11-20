@@ -129,7 +129,7 @@ const ProductDetail = () => {
         <Col>
           <Button
             variant='secondary'
-            onClick={() => (window.location.href = '/')}>
+            onClick={() => (window.location.href = '/home')}>
             Back to Shop
           </Button>
         </Col>

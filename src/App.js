@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home';
+import Home from './components/Home'; // Keep Home as it is
 import Login from './components/Login';
 import Signup from './components/Signup';
+import LandingPage from './components/LandingPage'; // Import the new LandingPage
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProductDetail from './components/ProductDetails';
@@ -11,7 +12,10 @@ function App() {
   return (
     <UserAuthContextProvider>
       <Routes>
-        {/* Protected route for Home */}
+        {/* Landing Page Route (new) */}
+        <Route path='/' element={<LandingPage />} />
+
+        {/* Home Page Route */}
         <Route
           path='/home'
           element={
@@ -20,12 +24,10 @@ function App() {
             </ProtectedRoute>
           }
         />
-        {/* Login and Signup routes */}
-        <Route path='/' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        {/* Dynamic route for product details */}
         <Route path='/product/:id' element={<ProductDetail />} />
-        {/* Add the ProductDetail route */}
+        {/* Login and Signup Routes */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
       </Routes>
     </UserAuthContextProvider>
   );
